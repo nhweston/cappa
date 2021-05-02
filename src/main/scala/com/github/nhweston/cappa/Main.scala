@@ -8,7 +8,7 @@ object Main {
     args.toSeq match {
       case filename +: Nil =>
         val src = Source.fromFile(filename)
-        val text = src.getLines().mkString
+        val text = src.getLines().mkString("\n")
         src.close()
         println(Parser(text).map(Printer.compose(Term.normalise)).merge)
     }

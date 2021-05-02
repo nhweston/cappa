@@ -45,9 +45,8 @@ object Parser {
 
   val Comment = "(?m)#.*$".r
 
-  def apply(text: String): Either[String, Term] = {
+  def apply(text: String): Either[String, Term] =
     (new Parser)(Comment.replaceAllIn(text, ""))
-  }
 
   def abstractions(head: String, tail: List[String], body: Term): Abs = {
     def aux(hd: String, tl: List[String]): Abs =

@@ -13,7 +13,7 @@ lazy val root =
     name := "cappa",
     libraryDependencies ++= Seq(
       "org.scala-lang.modules" %% "scala-parser-combinators" % "1.1.2",
-      "org.scalatest" %% "scalatest" % "3.1.0" % "test",
+      "org.scalatest" %% "scalatest" % "3.2.7" % "test",
     ),
     assemblyJarName in assembly := "cappa.jar",
     assemblyOutputPath in assembly := file(".") / "bin" / "cappa.jar",
