@@ -1,0 +1,3 @@
+THIS_DIR=$(dirname "$BASH_SOURCE")
+CAPPA_JAR="$THIS_DIR/cappa.jar"
+java -jar "$CAPPA_JAR" "$@"
