@@ -32,8 +32,7 @@ object Term {
     }
 
   /** Reduces the outermost redex. Returns `None` if the term is in beta normal form. */
-  def reduceOnce(root: Term): Option[Term] = {
-    println(Printer(root))
+  def reduceOnce(root: Term): Option[Term] =
     root match {
       case Abs(iden, body) =>
         reduceOnce(body).map(Abs(iden, _))
@@ -44,13 +43,12 @@ object Term {
       case Var(_) =>
         None
     }
-  }
 
   /** Reduces the given redex. */
   def reduce(name: String, body: Term, arg: Term): Term = {
     def aux(body: Term): Term =
       body match {
-        case Abs(n, body) => Abs(n, aux(body))
+        case Abs(n, body) => if (n == name) Abs(n, body) else Abs(n, aux(body))
         case App(func, arg) => App(aux(func), aux(arg))
         case Var(n) => if (n == name) arg else Var(n)
       }
